@@ -16,11 +16,11 @@ class EndOfTheWorldCalculation extends Controller
      */
     public function __invoke(Request $request, HelperService $service) : JsonResponse
     {
-//        $answer = $service->endOfTheWorldCalculation($request->get('leftNumber'), $request->get('rightNumber'));
-        $answer = '';
+        $answer = $service->endOfTheWorldCalculation($request->get('leftNumber'), $request->get('rightNumber'));
+
         return response()->json([
             'answer' => $answer,
-            'gnome' => ''//$service->activeBackgroundGnome()
+            'gnome' => $service->activeBackgroundGnome()
         ]);
     }
 }

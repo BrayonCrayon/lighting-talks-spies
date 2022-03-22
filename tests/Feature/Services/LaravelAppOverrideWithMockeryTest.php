@@ -15,9 +15,11 @@ class LaravelAppOverrideWithMockeryTest extends TestCase
     {
         $leftNumber = 5;
         $rightNumber = 5;
+        $this->withoutExceptionHandling();
         $this->instance(HelperService::class, Mockery::mock(HelperService::class, function (MockInterface $mock) use ($leftNumber, $rightNumber) {
-            $mock->shouldReceive("endOfTheWorldCalculation")->with($leftNumber, $rightNumber)->once();
-        })->shouldIgnoreMissing());
+            $mock->shouldReceive("endOfTheWorldCalculation")->with($rightNumber, $leftNumber)->once();
+            $mock->shouldReceive('activeBackgroundGnome');
+        }));
 
         $this->postJson(route('world.end'), [
             "leftNumber" => $leftNumber,
