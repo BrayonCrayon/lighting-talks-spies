@@ -15,9 +15,8 @@ class UsingLaravelMockeryHelperTest extends TestCase
         $rightNumber = 5;
         $mockedService = $this->mock(HelperService::class);
         $mockedService->shouldReceive("endOfTheWorldCalculation")
-            ->with($leftNumber, $rightNumber)
-            ->once();
-        $mockedService->shouldReceive('activeBackgroundGnome');
+            ->with($leftNumber, $rightNumber)->once();
+        $mockedService->shouldReceive("activeBackgroundGnome");
 
         $this->postJson(route('world.end'), [
             "leftNumber" => $leftNumber,

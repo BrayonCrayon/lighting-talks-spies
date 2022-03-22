@@ -15,10 +15,9 @@ class LaravelAppOverrideWithMockeryTest extends TestCase
     {
         $leftNumber = 5;
         $rightNumber = 5;
-        $this->instance(HelperService::class, Mockery::mock(HelperService::class, function (MockInterface $mock) use ($leftNumber, $rightNumber){
+        $this->instance(HelperService::class, Mockery::mock(HelperService::class, function (MockInterface $mock) use ($leftNumber, $rightNumber) {
             $mock->shouldReceive("endOfTheWorldCalculation")->with($leftNumber, $rightNumber)->once();
-            $mock->shouldReceive('activeBackgroundGnome');
-        }));
+        })->shouldIgnoreMissing());
 
         $this->postJson(route('world.end'), [
             "leftNumber" => $leftNumber,
@@ -27,20 +26,4 @@ class LaravelAppOverrideWithMockeryTest extends TestCase
             ->assertOk();
     }
 
-//    /** @test */
-//    public function it_will_call_service_with_correct_values()
-//    {
-//        $leftNumber = 5;
-//        $rightNumber = 5;
-//        $this->mock(HelperService::class, function (MockInterface $mock) use ($leftNumber, $rightNumber) {
-//            $mock->shouldReceive("endOfTheWorldCalculation")->with($leftNumber, $rightNumber)->once();
-//            $mock->shouldReceive('activeBackgroundGnome');
-//        });
-//
-//        $this->postJson(route('world.end'), [
-//            "leftNumber" => $leftNumber,
-//            "rightNumber" => $rightNumber
-//        ])
-//            ->assertOk();
-//    }
 }
