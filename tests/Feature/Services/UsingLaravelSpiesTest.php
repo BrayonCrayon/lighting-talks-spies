@@ -12,7 +12,7 @@ class UsingLaravelSpiesTest extends TestCase
     public function it_will_call_service_with_correct_values()
     {
         $leftNumber = 5;
-        $rightNumber = 5;
+        $rightNumber = 15;
         $spyService = $this->spy(HelperService::class);
 
         $this->postJson(route('world.end'), [

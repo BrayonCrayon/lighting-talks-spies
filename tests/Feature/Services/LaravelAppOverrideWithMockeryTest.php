@@ -14,10 +14,10 @@ class LaravelAppOverrideWithMockeryTest extends TestCase
     public function it_will_call_service_with_correct_values()
     {
         $leftNumber = 5;
-        $rightNumber = 5;
+        $rightNumber = 15;
         $this->withoutExceptionHandling();
         $this->instance(HelperService::class, Mockery::mock(HelperService::class, function (MockInterface $mock) use ($leftNumber, $rightNumber) {
-            $mock->shouldReceive("hitsAnApiMethod")->with($rightNumber, $leftNumber)->once();
+            $mock->shouldReceive("hitsAnApiMethod")->with($leftNumber, $rightNumber)->once();
             $mock->shouldReceive('activeBackgroundGnome')->once();
         }));
 
@@ -33,10 +33,10 @@ class LaravelAppOverrideWithMockeryTest extends TestCase
     public function it_will_call_service_with_correct_values_revision()
     {
         $leftNumber = 5;
-        $rightNumber = 5;
+        $rightNumber = 15;
         $this->withoutExceptionHandling();
         $mockedService = $this->instance(HelperService::class, Mockery::mock(HelperService::class));
-        $mockedService->shouldReceive("hitsAnApiMethod")->with($rightNumber, $leftNumber)->once();
+        $mockedService->shouldReceive("hitsAnApiMethod")->with($leftNumber, $rightNumber)->once();
         $mockedService->shouldReceive('activeBackgroundGnome')->once();
 
         $this->postJson(route('world.end'), [

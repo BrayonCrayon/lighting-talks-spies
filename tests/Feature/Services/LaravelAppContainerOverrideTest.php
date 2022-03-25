@@ -22,7 +22,7 @@ class LaravelAppContainerOverrideTest extends TestCase
 
         $this->postJson(route('world.end'), [
             "leftNumber" => 5,
-            "rightNumber" => 5
+            "rightNumber" => 15
         ])
             ->assertOk();
 
@@ -33,7 +33,7 @@ class LaravelAppContainerOverrideTest extends TestCase
     public function it_will_call_service_with_correct_values()
     {
         $leftNumber = 5;
-        $rightNumber = 5;
+        $rightNumber = 15;
         $mockService = new class(0,0) extends HelperService {
             public function __construct(public $leftNumber, public $rightNumber) {}
 
