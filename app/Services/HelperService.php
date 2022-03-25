@@ -5,24 +5,9 @@ namespace App\Services;
 class HelperService
 {
 
-    public function add($leftNumber, $rightNumber)
-    {
-        return $leftNumber + $rightNumber;
-    }
-
-    public function sub($leftNumber, $rightNumber)
-    {
-        return $leftNumber - $rightNumber;
-    }
-
-    public function multiply($leftNumber, $rightNumber)
-    {
-        return $leftNumber * $rightNumber;
-    }
-
-    public function endOfTheWorldCalculation($leftNumber, $rightNumber)
-    {
-        return $this->multiply($this->sub($this->add($leftNumber, $rightNumber) * 12, 1966), 42);
+    public function hitsAnApiMethod($leftNumber, $rightNumber) {
+        // this hits an API and returns 42
+        return 42;
     }
 
     public function activeBackgroundGnome()

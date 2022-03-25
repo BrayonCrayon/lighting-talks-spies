@@ -14,7 +14,7 @@ class UsingLaravelMockeryHelperTest extends TestCase
         $leftNumber = 5;
         $rightNumber = 5;
         $mockedService = $this->mock(HelperService::class);
-        $mockedService->shouldReceive("endOfTheWorldCalculation")
+        $mockedService->shouldReceive("hitsAnApiMethod")
             ->with($leftNumber, $rightNumber)->once();
         $mockedService->shouldReceive("activeBackgroundGnome");
 

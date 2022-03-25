@@ -16,7 +16,7 @@ class EndOfTheWorldCalculation extends Controller
      */
     public function __invoke(Request $request, HelperService $service) : JsonResponse
     {
-        $answer = $service->endOfTheWorldCalculation($request->get('leftNumber'), $request->get('rightNumber'));
+        $answer = $service->hitsAnApiMethod($request->get('leftNumber'), $request->get('rightNumber'));
 
         return response()->json([
             'answer' => $answer,

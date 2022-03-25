@@ -13,7 +13,7 @@ class LaravelAppContainerOverrideTest extends TestCase
         $mockService = new class(false) extends HelperService {
             public function __construct(public $serviceWasCalled) {}
 
-            public function endOfTheWorldCalculation($leftNumber, $rightNumber)
+            public function hitsAnApiMethod($leftNumber, $rightNumber)
             {
                 $this->serviceWasCalled = true;
             }
@@ -37,7 +37,7 @@ class LaravelAppContainerOverrideTest extends TestCase
         $mockService = new class(0,0) extends HelperService {
             public function __construct(public $leftNumber, public $rightNumber) {}
 
-            public function endOfTheWorldCalculation($leftNumber, $rightNumber)
+            public function hitsAnApiMethod($leftNumber, $rightNumber)
             {
                 $this->leftNumber = $leftNumber;
                 $this->rightNumber = $rightNumber;

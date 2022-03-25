@@ -17,7 +17,7 @@ class LaravelAppOverrideWithMockeryTest extends TestCase
         $rightNumber = 5;
         $this->withoutExceptionHandling();
         $this->instance(HelperService::class, Mockery::mock(HelperService::class, function (MockInterface $mock) use ($leftNumber, $rightNumber) {
-            $mock->shouldReceive("endOfTheWorldCalculation")->with($rightNumber, $leftNumber)->once();
+            $mock->shouldReceive("hitsAnApiMethod")->with($rightNumber, $leftNumber)->once();
             $mock->shouldReceive('activeBackgroundGnome')->once();
         }));
 
@@ -36,7 +36,7 @@ class LaravelAppOverrideWithMockeryTest extends TestCase
         $rightNumber = 5;
         $this->withoutExceptionHandling();
         $mockedService = $this->instance(HelperService::class, Mockery::mock(HelperService::class));
-        $mockedService->shouldReceive("endOfTheWorldCalculation")->with($rightNumber, $leftNumber)->once();
+        $mockedService->shouldReceive("hitsAnApiMethod")->with($rightNumber, $leftNumber)->once();
         $mockedService->shouldReceive('activeBackgroundGnome')->once();
 
         $this->postJson(route('world.end'), [
