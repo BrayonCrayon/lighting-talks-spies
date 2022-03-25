@@ -18,6 +18,7 @@ class UsingLaravelMockeryHelperTest extends TestCase
             ->with($leftNumber, $rightNumber)->once();
         $mockedService->shouldReceive("activeBackgroundGnome");
 
+        $this->withoutExceptionHandling();
         $this->postJson(route('world.end'), [
             "leftNumber" => $leftNumber,
             "rightNumber" => $rightNumber

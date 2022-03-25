@@ -22,6 +22,6 @@ class UsingLaravelSpiesTest extends TestCase
             ->assertOk();
 
         $spyService->shouldHaveReceived("endOfTheWorldCalculation")
-            ->with($leftNumber, $rightNumber);
+            ->with($leftNumber, $rightNumber)->once();
     }
 }
